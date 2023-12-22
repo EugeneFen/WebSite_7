@@ -140,8 +140,9 @@ values("One night", 2, 1, "2020", 8)
 print("Задание 5:")
 cursor.execute('''
 with Table_max_num as(
-        select distinct publisher_id, max(available_numbers) over(PARTITION BY publisher_id) as avail_max
+        select distinct publisher_id,  max(available_numbers) over (partition by publisher_id) as avail_max
         from book
+        where available_numbers > 0
     )
 select publisher_name, title, available_numbers
 from Table_max_num, book inner join publisher using(publisher_id)
