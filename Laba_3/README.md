@@ -28,5 +28,10 @@
 
 Результат запросов на Postman:
 
-Рисунок 9 - 
+Рисунок 9, 10 - Получение токена по паролю POST
 <image src="access token 1.jpg"> 
+<image src="access token 2.jpg"> 
+
+Рисунок 11, 12 - Получение токена по refresh токену POST
+<image src="refresh token post 1.jpg"> 
+<image src="refresh token post 2.jpg"> 
