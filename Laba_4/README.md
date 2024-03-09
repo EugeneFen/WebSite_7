@@ -110,4 +110,26 @@
 
 **Удалить задачу пользователя**
 
+Удаляемая задача:
+
+![Текст описания](images/Del_Task.png)
+
+Результат:
+
+![Текст описания](images/Del_Task_Last.png)
+
+Код:
+
+    @app.route('/delete_task', methods=['post'])
+    def remove_task():
+        conn = sqlite3.connect("ToDoYou.db")
+        cur = conn.cursor()
+        task_id = request.values.get('task_num')
+    
+        cur.execute(f"DELETE FROM task where id_task = '{task_id}'")
+    
+        conn.commit()
+        return redirect(url_for("index"))
+
+**Обновить задачу пользователя**
 
