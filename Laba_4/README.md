@@ -83,4 +83,31 @@
 
 **Добавить задачу пользователя**
 
+Добавляемая задача:
+
+![Текст описания](images/Add_Task.png)
+
+Результат:
+
+![Текст описания](images/Add_Task_Last.png)
+
+Код:
+
+    @app.route('/todo', methods=['post'])
+    def add_tasks():
+        conn = sqlite3.connect("ToDoYou.db")
+        cur = conn.cursor()
+        text_tasks = request.values.get('task_text')
+        status_tasks = request.values.get('task_status')
+        credit_tasks = request.values.get('credit')
+    
+        cur.execute("""INSERT INTO task(text_task, status, credit_card_number) VALUES(:text_t, :status_t, :credit);""",
+                    {"text_t": text_tasks, "status_t": status_tasks, "credit": credit_tasks})
+    
+        conn.commit()
+        conn.close()
+        return redirect(url_for("index"))
+
+**Удалить задачу пользователя**
+
 
