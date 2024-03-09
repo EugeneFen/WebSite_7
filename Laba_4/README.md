@@ -36,3 +36,19 @@
 Итоговый список:
 
 ![Текст описания](images/User_List_Last.png)
+
+Код:
+
+\```python
+@app.route('/user', methods=['post'])
+def add_user2():
+    conn = sqlite3.connect("ToDoYou.db")
+    cur = conn.cursor()
+    name_us = request.values.get('user_name')
+
+    cur.execute(f"INSERT INTO user (name) VALUES('{name_us}')")
+
+    conn.commit()
+
+    return redirect(url_for("index"))
+\```
