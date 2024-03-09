@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> Задачи </title>
+</head>
+<body>
+<p>Изменить задачу</p>
+<form action="{{ url_for('post_update_task') }}" method="post">
+ <input type = number name=credit value="{{user_credit}}">
+ <select name=task_num>
+ {% for i in range(len(tasks_list)) %}
+ <option value={{tasks_list[i][0]}}>{{tasks_list[i][1]}}</option>
+ {% endfor %}
+ </select>
+ <p>Новый текст задачи: <input type = text name=task_text></p>
+ <p>новый статус задачи: <input type = text name=task_status></p>
+  <p><input type=submit value=Изменить></p>
+ </form>
+</body>
+</html>

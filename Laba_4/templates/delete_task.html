@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> Задачи </title>
+</head>
+<body>
+<p>Удалить задачу</p>
+<form action="{{ url_for('remove_task') }}" method="post">
+ <select name=task_num>
+ {% for i in range(len(tasks_list)) %}
+ <option value={{tasks_list[i][0]}}>{{tasks_list[i][1]}}</option>
+ {% endfor %}
+ </select>
+  <p><input type=submit value=Удалить></p>
+ </form>
+</body>
+</html>
