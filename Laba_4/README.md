@@ -133,3 +133,25 @@
 
 **Обновить задачу пользователя**
 
+Новая задача:
+
+![Текст описания](images/Update_Task.png)
+
+Результат:
+
+![Текст описания](images/Update_Task_Last.png)
+
+Код:
+
+    @app.route('/update_task', methods=['post'])
+    def post_update_task():
+        conn = sqlite3.connect("ToDoYou.db")
+        cur = conn.cursor()
+        task_id = request.values.get('task_num')
+        new_task_text=request.values.get('task_text')
+        new_task_status=request.values.get('task_status')
+    
+        cur.execute(f"UPDATE task SET text_task='{new_task_text}', status='{new_task_status}' where id_task = '{task_id}'")
+    
+        conn.commit()
+        return redirect(url_for("index"))
