@@ -50,3 +50,9 @@
         conn.commit()
     
         return redirect(url_for("index"))
+
+**Получить список задач пользователя**
+
+Список задач:
+
+![Текст описания](images/.png)
