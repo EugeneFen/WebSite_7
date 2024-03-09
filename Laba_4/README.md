@@ -56,3 +56,31 @@
 Список задач:
 
 ![Текст описания](images/Task_list.png)
+
+Код:
+
+    @app.route('/todo', methods=['get'])
+    def get_tasks():
+        conn = sqlite3.connect("ToDoYou.db")
+        cur = conn.cursor()
+        user_us = request.values.get('name_us')
+    
+        cur.execute(f"SELECT name FROM user WHERE credit_card_number = '{user_us}'")
+        name_sql = cur.fetchall()
+        if not name_sql:
+            raise ValueError("Такого пользователя нет 4XX")
+    
+        cur.execute(f"SELECT id_task, text_task, status FROM task WHERE credit_card_number = '{user_us}'")
+    
+        list_task = cur.fetchall()
+        return render_template(
+            'todo.html',
+            tasks_list=list_task,
+            name_user=name_sql[0][0],
+            user_credit=user_us,
+            len=len
+        )
+
+**Добавить задачу пользователя**
+
+
